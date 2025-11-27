@@ -1,0 +1,25 @@
+//turing machine anbncn
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int simulate(char* input) {
+    int len=strlen(input);
+    int i=0,a=0,b=0,c=0;
+
+    while(i<len && input[i]=='a'){a++; i++;}
+    while(i<len && input[i]=='b'){b++; i++;}
+    while(i<len && input[i]=='c'){c++; i++;}
+
+    if(i!=len) return 0;
+    if(a==0 || b==0 || c==0) return 0;
+    return (a==b && b==c);
+}
+
+int main() {
+    char w[100];
+    cout<<"Enter string: ";
+    cin>>w;
+    cout<<(simulate(w)?"Accepted":"Rejected")<<"\n";
+    return 0;
+}

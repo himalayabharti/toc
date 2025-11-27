@@ -1,0 +1,31 @@
+//wxwr
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+
+bool simulate(string w) {
+    stack<char> s;
+    bool seenX = false;
+
+    for(char c : w){
+        if(!seenX){
+            if(c=='a' || c=='b') s.push(c);
+            else if(c=='X') seenX=true;
+            else return false;
+        }
+        else{
+            if(s.empty() || s.top()!=c) return false;
+            s.pop();
+        }
+    }
+    return seenX && s.empty();
+}
+
+int main() {
+    string w;
+    cout<<"Enter string: ";
+    cin>>w;
+    cout<<(simulate(w)?"Accepted":"Rejected")<<"\n";
+    return 0;
+}

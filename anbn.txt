@@ -1,0 +1,28 @@
+//a^nb^n
+#include <iostream>
+#include <stack>
+#include <cstring>
+using namespace std;
+
+int simulatePDA(char* input) {
+    stack<char> s;
+    int len = strlen(input);
+
+    for(int i=0;i<len;i++){
+        if(input[i]=='a') s.push('a');
+        else if(input[i]=='b'){
+            if(s.empty()) return 0;
+            s.pop();
+        }
+        else return 0;
+    }
+    return s.empty();
+}
+
+int main() {
+    char input[100];
+    cout<<"Enter string: ";
+    cin>>input;
+    cout<<(simulatePDA(input)?"Accepted":"Rejected")<<"\n";
+    return 0;
+}

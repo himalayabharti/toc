@@ -1,0 +1,55 @@
+
+//3 conscutive 1's
+#include <iostream>
+#include <string>
+using namespace std;
+
+void State0(string w, int i);
+void State1(string w, int i);
+void State2(string w, int i);
+void State3(string w, int i);
+
+int main() {
+    string w;
+    cout << "Enter a string: ";
+    cin >> w;
+    State0(w, 0);
+    return 0;
+}
+
+void State0(string w, int i) {
+    if (i == w.length()) {
+        cout << "String is rejected\n";
+        return;
+    }
+    if (w[i] == '1')
+        State1(w, i + 1);
+    else
+        State0(w, i + 1);
+}
+
+void State1(string w, int i) {
+    if (i == w.length()) {
+        cout << "String is rejected\n";
+        return;
+    }
+    if (w[i] == '1')
+        State2(w, i + 1);
+    else
+        State0(w, i + 1);
+}
+
+void State2(string w, int i) {
+    if (i == w.length()) {
+        cout << "String is rejected\n";
+        return;
+    }
+    if (w[i] == '1')
+        State3(w, i + 1);
+    else
+        State0(w, i + 1);
+}
+
+void State3(string w, int i) {
+    cout << "String is accepted\n";
+}
